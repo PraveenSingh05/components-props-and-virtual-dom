@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Rendering</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    // Your ItemList component code will go here
+
+   let containerRoot = document.getElementById("root");
+    
+    function Gallery({children}){
+
+        // styling gallery 
+        const galleryStyle = {
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gridGap: "10px",          
+        }
+
+       return(
+        <div style={galleryStyle}>
+            {children}
+        </div>
+       )
+    }
+
+    function App(){
+        return(
+
+            // passing Gallery component here to display it into root
+            // And inside Gallery storing images as a child of Gallery
+            
+            <Gallery>
+                <img src="https://cdn.pixabay.com/photo/2022/01/29/09/01/bird-6976834_1280.jpg" alt=""/>
+                <img src="https://cdn.pixabay.com/photo/2023/08/18/15/02/cat-8198720_1280.jpg" alt=""/>
+                <img src="https://cdn.pixabay.com/photo/2024/04/15/17/51/ai-generated-8698374_1280.png" alt=""/>
+            </Gallery>
+        )
+    }
+
+    let reactRoot = ReactDOM.createRoot(containerRoot);
+
+    reactRoot.render(<App/>)
+
+  </script>
+</body>
+</html>
